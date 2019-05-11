@@ -1,0 +1,38 @@
+body{
+	margin: 0;
+	padding: 0;
+	background-color: lightgreen;
+}
+
+.login{
+	height:50;
+    width: 100%;
+    margin:auto;
+	background-color:lightgreen ;
+    font-family: arial;
+
+}	
+.divFormulario{
+	background-color: lightgreen;
+ 	padding: 20px 20px 20px 20px;
+ 	text-align:center;
+}
+.container{
+	margin:auto;
+	padding: auto;
+}
+.divesquerda{
+	width:100px;
+	height:100px;
+
+}
+
+footer{
+	clear: both;
+	width: 100%;	
+	text-align: center;
+	font-family: arial;
+	
+}
+
+
