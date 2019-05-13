@@ -1,0 +1,39 @@
+h1{
+    color: whitesmoke;
+}
+#banner{
+    height: 65px;
+    background-color: #006400;
+    width: 100%;
+}
+#main
+{
+    height: 600px;
+    background-color: #DCDCDC;
+}
+#cadastrar{
+    
+    height: 500px;
+    width: 600px;
+}
+#footer{
+    font-size: 10px ; 
+    background-color: #006400; 
+    height: 35px; 
+    color: whitesmoke;
+    width: 100%;
+}
+#navItem{
+    position: absolute;
+    top: -10px;
+    
+}
+#navItem2{
+    position: absolute;
+    left: 110px;
+}
+#navItem3{
+    position: absolute;
+    left: 130px;
+    top:10px;
+}

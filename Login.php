@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html >
+
+	
 	<head>
 		
 		<title>Pagina de Login</title>
@@ -8,68 +10,58 @@
   	  	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     	<!-- Bootstrap CSS -->
 	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		
-
-		<style>
-			
-			h1{
-				color: whitesmoke;
-			}
-			#banner{
-				height: 65px;
-				background-color: #006400;
-			}
-			#main
-			{
-				height: 600px;
-				background-color: #DCDCDC;
-			}
-			#cadastrar{
-				
-				height: 500px;
-				width: 600px;
-			}
-			#footer{
-				font-size: 10px ; 
-				background-color: #006400; 
-				height: 30px; 
-				color: whitesmoke;
-				width: 100%;
-			}
-			
-		</style>
+		<!-- css proprio -->
+		<link rel="stylesheet" type="text/css" href="style.css">
 
 	</head>	
 	<body >
 		<!-- as tabelas agora são grid do bootstrap -->
 		<!-- pesquise sobre isso, tem na documentaçaõ do bootstrap -->
 
-		<div id="banner" class="container-fluid">
+		<div class="container-fluid">
 				<!-- row é uma classe de linha do bootstrap -->
 				<div class="row">
-					<!-- col-numero é uma classe de colunas do bootstrap -->
-					<!-- o numero varia de 1 a 12 -->
-					<div  class="col-6 ">
-						<!-- justify-content-right justifica o codigo a direita -->
-						<div class="row justify-content-right">
-							<div class="col-2 "><img class="h-100" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></div>
-							<div class="col-4 "><h1><b>CoolPet</b></h1></div>
+					
+					
+					<ul id="banner" class="nav">
+						<!-- Divide a nav em 2 colunas usando o grid  -->
+						<div class="col-6">
+							<li id="navItem" class="nav-item">
+								<a class="nav-link active" href="login.php"><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
+							</li>
+							<li class="nav-item">
+								<a id="navItem2" class="nav-link active" href="login.php"><h1><b>CoolPet</b></h1></a>
+							</li>
 						</div>
-									
-					</div>
-					
-					
-					
-					
+						<div class="col-6 justify-content-end">						
+							<li>	
+								<div id="navItem3" >
+									<form method="POST">
+											<input type="text" name="email" placeholder="Digite seu email" required>
+											<input type="password" name="senha" placeholder="Digite sua Senha" required>
+											<button type="submit" class="btn btn-success">Login</button>
+									</form>
+								</div>
+							</li>
+						</div>				
+					</ul>
+				</div> 		
+				<!-- 
 					<div  id="login" class="col-6">
-						<!-- formulario de login -->
+						
 						<form method="POST">
-							<input type="text" name="id" placeholder="Digite seu Login" required>
-							<input type="password" name="senha" placeholder="Digite sua Senha" required>
-							<button class="btn btn-success">Login</button>
-						</form>
-					</div>
-				</div>
+                                <input type="text" name="email" placeholder="Digite seu email" required>
+                                <input type="password" name="senha" placeholder="Digite sua Senha" required>
+                                <button type="submit" class="btn btn-success">Login</button>
+                            </form>
+                        </div> 
+                -->
+
+				
+
+
+
+
 				<!-- justify-content-center justifica o conteudo ao centro -->
 				<div id="main"  class="row justify-content-center">
 					<div id="cadastrar" >
@@ -79,8 +71,10 @@
 							<h5>É gratuito e sempre será</h5>
 							
 							<div class="form-group">
+
 								<!-- formulario para cadastrar um novo usuario -->
-								<form method="post">
+								<!-- O action="cadastrar.php" leva para a pagina cadastrar,php mantendo os dados do $_POST -->
+								<form method="post" action="cadastrar.php">
 									<div class="row">
 											<div class="col-6">
 												<input class="form-control" type="text" name="nome" placeholder="Nome" required>
@@ -96,7 +90,10 @@
 									<div>
 										<div class="row">
 											<div class="col-7">
-											<center><label><h4>  Data de nascimento</h4></label></center>	
+												<center><label><h4>Data de nascimento</h4></label></center>	
+											</div>
+											<div class="col-5">
+												<center><h4>Sexo</h4></center>
 											</div>
 										</div>	
 									</div>
@@ -104,38 +101,8 @@
 									
 									<!-- div dos selects e radios do cadastrar -->
 									<div class="row ">
-										<div class="col-2	">	
-											<select class="custom-select" name="diaNascimento" required>
-												<!-- php pra exibir os 31 dias do mês no select -->
-												<?php
-													for($i=1;$i<=31;$i=$i+1)
-													{
-														echo "<option value='$i'>$i</option>";
-													}
-												?>
-											</select>
-										</div>
-										<div class="col-2">
-											<select class="custom-select" name="mesNascimento" required>
-												<!-- php pra exibir os 12 meses do ano -->
-												<?php
-													for($i=1;$i<=12;$i=$i+1)
-													{
-														echo "<option value='$i'>$i</option>";
-													}
-												?>
-											</select>
-										</div>
-										<div class="col-3">
-											<select class="custom-select" name="anoNascimento req" required>
-												<!-- php pra exibir os anos de 2019 até 1950 -->
-												<?php
-													for($i=2019;$i>=1950;$i=$i-1)
-													{
-														echo "<option value='$i'>$i</option>";
-													}
-												?>	<br>	
-											</select>
+										<div class="col-7">
+											<input class="form-control" type="date" name="dataNascimento"  >
 										</div>
 
 										<div class="col-5">
@@ -146,7 +113,7 @@
 														<input class="" type="radio" name="sexo" value="feminino" required>
 													</div>
 													<div class="col-6">
-														<lable>Masculino</lable>
+														<label>Masculino</label>
 														<input class="" type="radio" name="sexo" value="masculino" required>
 													</div>
 												</div>
@@ -163,12 +130,12 @@
 										
 									</div>
 									
-									
+									<br><button type="submit" class="btn btn-danger">Inscrever-se</button>
 									
 									
 									
 
-									<br><button class="btn btn-danger">Inscrever-se</button>
+									
 								</form>
 							</div>
 						</center>
@@ -185,7 +152,9 @@
 				
 			
 			
-	
+				<!-- Acho que esta pronto, mas tenho que ver o layout ainda
+					proximo passo: criar e conectar a um banco de dados
+				-->
 	
 	
 	
