@@ -3,9 +3,9 @@
 		
 		if($_POST!=NULL)
 		{   
-            //inclui o arquivo de configuração
-			include_once("conf.php");
-
+            
+			//a variavel de configuração do banco é $conexao
+			include_once "conexao_bd.php";
 			
 
 			$nome = $_POST["nome"];
@@ -29,7 +29,9 @@
 			$sql = "INSERT into usuario (nome, sobrenome, email, senha, dataNascimento, sexo)
 			VALUES('$nome', '$sobrenome', '$email', '$senha', '$dataNascimento', '$sexo')";
 			
-			$retorno = $con->query($sql);
+
+
+			$retorno = $conexao->query($sql);
 
 
 
@@ -39,20 +41,43 @@
 						alert('Cadastrado com sucesso!');
 					</script>
 				";
+				
+				$sql = " SELECT * FROM usuario 
+				where email = '$email'
+				AND senha = '$senha'";
+				$retorno = $conexao->query($sql);
+				
+				if($registro = $retorno->fetch_array())
+				{
+					$id = $registro["id"];
+					
+					//começa uma sessão
+					session_start();
+
+					$_SESSION["logado"] = "ok";
+					$_SESSION["id"] = $id;
+					$_SESSION["nome"] = $nome;
+					echo"********O id é: " . $id . "*********";
+					echo"********O id da session é: " . $_SESSION["id"] . "*********";
+				}
+				
+				
+				
+
 			}
 			else 
 			{
 				echo "<script>
 						alert('Erro ao Cadastrar!');
 					</script>";
-				echo $con->error;
+				echo $conexao->error;
 			}
 
 
         }
         else {
             //se tentar entrar na pagina de cadastro sem fazer o login, ela redireciona para o login.php
-            //header('Location: Login.php');
+            //header('Location: index.php');
         }
 ?>
 
@@ -80,27 +105,44 @@
         </style>
 	</head>	
 	<body >
-		<!-- as tabelas agora são grid do bootstrap -->
-		<!-- pesquise sobre isso, tem na documentaçaõ do bootstrap -->
-
 		<div class="container-fluid">
-            <div class="row">
-                <ul id="banner" class="nav">
-                        <div class="col-6">
-                                <li id="navItem" class="nav-item">
-                                    <a class="nav-link active" href="login.php"><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a id="navItem2" class="nav-link active" href="login.php"><h1><b>CoolPet</b></h1></a>
-                                </li>
-                        </div>     
-                </ul>	
-            </div>
-                
-	
-	
-	
-		</div> 
+			<!-- Topo -->
+			<?php
+				include_once "topo.php";
+			?>
+
+			<div id="main" class="row justify-content-center">
+				<div id="cadastrar">
+					<center>
+						<h2>Cadastre uma foto sua</h2>
+						<div>
+							<img src="imagens/user.png" alt="icone de usuario">
+						</div>
+						<div class="form-group">
+							<br>
+							<form action="uploud.php" enctype="multipart/form-data" method="POST">
+								<input type="file" name="foto" >
+								<center>
+									<br>
+									<button type="submit"  class=" btn btn-danger">Prosseguir</button>
+								</center>
+							</form>
+							
+						</div>
+					</center>
+					
+				</div>
+			</div>
+
+
+
+			<!-- Footer -->
+			<?php
+				include_once "rodape.php";
+			?>
+		</div>
+		
+		
 
 		
 

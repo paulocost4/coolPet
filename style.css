@@ -1,5 +1,8 @@
 h1{
-    color: whitesmoke;
+    color: black;
+}
+b{
+    color: white;
 }
 #banner{
     height: 65px;
@@ -11,6 +14,12 @@ h1{
     height: 600px;
     background-color: #DCDCDC;
 }
+#mainCadastrarAnimal
+{
+    height: 1300px;
+    background-color: #DCDCDC;
+}
+
 #cadastrar{
     
     height: 500px;
@@ -31,6 +40,7 @@ h1{
 #navItem2{
     position: absolute;
     left: 110px;
+    
 }
 #navItem3{
     position: absolute;
