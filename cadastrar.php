@@ -1,11 +1,24 @@
 <?php
+		include_once "conexao_bd.php";
+		//add o arquivo php que pega a foto
+		include_once "uploud.php";
+		session_start();
+		echo " *** Files está setado? " . isset($_FILES) . "***<br>";
+		echo "O id é: " . $_SESSION["id"] . "*** <br>";
+
+		//se a variavel de arquivo estiver cadastrada, chama a função pra pegar a foto
+		if (isset($_FILES)) {
+			echo"Pauloooooooooooooo";
+			getFoto($_SESSION["id"], "usuario", "cadastrarAnimal.php", $conexao);
+		}
 		
-		
+
+
 		if($_POST!=NULL)
 		{   
             
 			//a variavel de configuração do banco é $conexao
-			include_once "conexao_bd.php";
+			
 			
 
 			$nome = $_POST["nome"];
@@ -42,24 +55,9 @@
 					</script>
 				";
 				
-				$sql = " SELECT * FROM usuario 
-				where email = '$email'
-				AND senha = '$senha'";
-				$retorno = $conexao->query($sql);
-				
-				if($registro = $retorno->fetch_array())
-				{
-					$id = $registro["id"];
-					
-					//começa uma sessão
-					session_start();
-
-					$_SESSION["logado"] = "ok";
-					$_SESSION["id"] = $id;
-					$_SESSION["nome"] = $nome;
-					echo"********O id é: " . $id . "*********";
-					echo"********O id da session é: " . $_SESSION["id"] . "*********";
-				}
+				//função logar definida em conexão_bd.php
+				logar($email, $senha, $conexao);
+				$_SESSION["cadastrado"] = "not";
 				
 				
 				
@@ -120,7 +118,7 @@
 						</div>
 						<div class="form-group">
 							<br>
-							<form action="uploud.php" enctype="multipart/form-data" method="POST">
+							<form action="cadastrar.php" enctype="multipart/form-data" method="POST">
 								<input type="file" name="foto" >
 								<center>
 									<br>

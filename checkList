@@ -1,0 +1,23 @@
+    --Tabelas 
+* Criar uma tabela de post (id, imagem, texto, data, hora )  
+* Criar tabela comentario (id, texto)
+* Criar tabela usuario_comentario(idUsuario, idComentario)
+* criar tabela like(id, idPost, idUsuario, quantidade) pode usar count() pra ver quanstos likes tem
+* Criar tabela post_usuario (idUsuario, idPost)
+* criar tabela convites (id, idUsuario, idAmigo) 
+* criar tabela amigo (id, nome) 
+* criar tabela amigo_usuario (idUsuario, idAmigo) 
+
+    --Organizar o feed
+*  
+* Criar funções pra aceitar e recusar amizades
+* Criar função pra postar algo na timeline
+* Criar função pra fazer a pesquisa (select em usuarios e animais)
+* Criar selects pra mostrar suas postagens e as dos outros na timeline
+* 
+
+    --Perfil
+* Criar funções pra fazer convites      
+* Exibir sua foto e a de seus animais (ou um animal só)  
+* Criar função pra exluir animal ou editar os existentes  
+* Criar função pra apagar os seus post

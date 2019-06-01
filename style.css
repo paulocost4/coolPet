@@ -4,21 +4,26 @@ h1{
 b{
     color: white;
 }
+#bannerLogo{
+    height: 65px;
+    background-color: #006400;
+    width: 100%;
+}
 #banner{
     height: 65px;
     background-color: #006400;
     width: 100%;
 }
+#nav{
+    background-color: #006400;
+}
+
 #main
 {
     height: 600px;
     background-color: #DCDCDC;
 }
-#mainCadastrarAnimal
-{
-    height: 1300px;
-    background-color: #DCDCDC;
-}
+
 
 #cadastrar{
     
@@ -32,6 +37,7 @@ b{
     color: whitesmoke;
     width: 100%;
 }
+
 #navItem{
     position: absolute;
     top: -10px;
@@ -46,4 +52,8 @@ b{
     position: absolute;
     left: 130px;
     top:10px;
+}
+#navLogo{
+    position: absolute;
+    top: -10px;
 }

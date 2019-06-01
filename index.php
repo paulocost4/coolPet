@@ -64,7 +64,7 @@
 								</div>
 								
 								
-								<!-- div dos selects e radios do cadastrar -->
+								<!-- div dos 4s e radios do cadastrar -->
 								<div class="row ">
 									<div class="col-7">
 										<input class="form-control" type="date" name="dataNascimento"  >

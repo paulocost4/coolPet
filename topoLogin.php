@@ -23,16 +23,16 @@
                       
                         <div class="col-6">
                             <li id="navItem" class="nav-item">
-                                <a class="nav-link active" href="login.php"><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
+                                <a class="nav-link active" href=""><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
                             </li>
                             <li class="nav-item">
-                                <a id="navItem2" class="nav-link active" href="login.php"><h1><b>CoolPet</b></h1></a>
+                                <a id="navItem2" class="nav-link active" href=""><h1><b>CoolPet</b></h1></a>
                             </li>
                         </div>
                         <div class="col-6 justify-content-end">                     
                             <li>    
                                 <div id="navItem3" >
-                                    <form method="POST" action="feed.php">
+                                    <form method="POST" action="logar.php">
                                             <div class="form-group">
                                                 <input type="text" name="email" placeholder="Digite seu email" required>
                                                 <input type="password" name="senha" placeholder="Digite sua Senha" required>

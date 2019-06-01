@@ -1,4 +1,31 @@
-  <?php include_once "topo.php"; ?>
+<?php 
+  session_start();
+  if ($_SESSION["logado"]=="ok") 
+  {
+    include_once "logar.php"; 
+    
+    echo " hahahahahah   logado = " . $_SESSION["logado"];
+    echo " hahahahahah   id = " . $_SESSION["id"];
+    echo " hahahahahah   nome = " . $_SESSION["nome"];
+    echo "**o id do animal é: " . $_SESSION["aux"]; 
+  }
+  elseif ($_SESSION["logado"]!="ok") {
+    echo  "<script>
+            alert('Você deve fazer o login primeiro'); 
+            window.location.href = 'index.php';   
+          </script>";
+  }
+  else {
+    echo  "<script>
+            alert('Email ou senha incorreto'); 
+            window.location.href = 'index.php';   
+          </script>";
+    
+  }
+  session_abort();
+?>
+
+  <?php include_once "topoFeed.php"; ?>
   <!DOCTYPE html>
   <html>
   <title>|Time |Line</title>
@@ -31,8 +58,8 @@
         <!-- Profile -->
         <div class="w3-card w3-round w3-white">
           <div class="w3-container">
-           <h4 class="w3-center" <?php echo $nome?>>Variavel Nome</h4>
-           <p class="w3-center"><b><img src="/w3images/avatar3.png" class="w3-circle" style="height:106px;width:106px"alt="UIrl da foto da pessoa"></b></p>
+          <h4 class="w3-center"> <?php echo $_SESSION["nome"]; ?> </h4>
+           <p class="w3-center"><b><?php include_once "getImagem.php"; ?></b></p>
            <hr>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Pet</b></p>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Dono</b></p>
@@ -199,6 +226,7 @@
     <!-- End Grid -->
     </div>
     
+    <?php include_once "rodape.php"; ?>
   <!-- End Page Container -->
   </div>
   <br>
@@ -234,7 +262,7 @@
   </body>
   </html> 
 
-  <?php include_once "rodape.php"; ?>
+
     
 
 

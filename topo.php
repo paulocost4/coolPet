@@ -23,10 +23,10 @@
                         <!-- Divide a nav em 2 colunas usando o grid  -->
                         <div class="col-6">
                             <li id="navItem" class="nav-item">
-                                <a class="nav-link active" href="login.php"><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
+                                <a class="nav-link active" href=""><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
                             </li>
                             <li class="nav-item">
-                                <a id="navItem2" class="nav-link active" href="login.php"><h1><b>CoolPet</b></h1></a>
+                                <a id="navItem2" class="nav-link active" href=""><h1><b>CoolPet</b></h1></a>
                             </li>
                         </div>
                                       
