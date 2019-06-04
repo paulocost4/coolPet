@@ -31,6 +31,11 @@
                 
                 
                 $retorno = $conexao->query($sql);
+                if ($retorno ==false)
+                {
+                    $sql = "UPDATE $tabelaVar SET imagem = '$mysqlImg' where id = '$id'";
+                    $retorno = $conexao->query($sql);
+                }
                 
                 if ($retorno==TRUE) {
                     echo "
@@ -47,7 +52,7 @@
                         alert('A imagem não foi enviada');
                     </script>
                     ";
-                    echo "Erro: " . $conexao->error;
+                    echo "Erro: haha " . $conexao->error;
                 }
             
             }
