@@ -1,4 +1,8 @@
 <!-- Topo para a pagina inicial com o login -->
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html >
 	<head>
@@ -27,16 +31,16 @@
                 
                 <div class="col-6">
                     <li id="navItem" class="nav-item">
-                        <a class="nav-link active" href=""><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
+                        <a class="nav-link active" href="feed.php"><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
                     </li>
                     <li class="nav-item">
-                        <a id="navItem2" class="nav-link active" href=""><h1><b>CoolPet</b></h1></a>
+                        <a id="navItem2" class="nav-link active" href="feed.php"><h1><b>CoolPet</b></h1></a>
                     </li>
                 </div>
                 <div class="col-6 justify-content-end">                     
                     <li>    
                         <div id="navItem3" >
-                            <form method="POST" action="">
+                            <form method="GET" action="pesquisar.php">
                                     <div class="form-group">
                                         <input size="30px" type="text" name="pesquisar" placeholder="O que você quer encontrar?" required>
                                         <button type="submit" class="btn btn-success">Pesquisar</button>
@@ -56,7 +60,7 @@
                     <a style="color: snow" class="nav-link " href="feed.php">Home</a>
                 </li>
                 <li class="nav-item">
-                        <a style="color: snow" class="nav-link" href="perfil.php">Perfil</a>
+                        <a style="color: snow" class="nav-link" href="perfil.php?idPessoa=<?php echo $_SESSION['id']?>" >Perfil</a>
                         </li>
                 <li class="nav-item dropdown">
                     <a style="color: snow; background-color: #006400" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opção</a>

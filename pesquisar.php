@@ -1,14 +1,9 @@
+
+
+
 <?php 
-  session_start();
-  echo " hahahahahah   logado = " . $_SESSION["logado"];
-  echo " hahahahahah   id = " . $_SESSION["id"];
-  echo " hahahahahah   nome = " . $_SESSION["nome"];
-  include_once "topoFeed.php";
-  
-  
-
-
-?>
+    include_once "topoFeed.php";
+ ?>
   <!DOCTYPE html>
   <html>
   <title>|Time |Line</title>
@@ -19,16 +14,10 @@
   <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-      html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
-      #rightCol{
-            position: absolute;
-            top: 146px;
-            right: 9px;
-      }
-      
+  html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
   </style>
   <body class="w3-theme-l5">
-  
+
 
   
 
@@ -36,23 +25,22 @@
   <div class="w3-container w3-content" style="max-width:1400px;margin-top:0px">    
     <!-- The Grid -->
     <div class="w3-row">
-      
       <!-- Left Column -->
       <div class="w3-col m3">
         <!-- Profile -->
         <div class="w3-card w3-round w3-white">
           <div class="w3-container">
-           <h4 class="w3-center"> <?php echo $_SESSION["nome"]; ?> </h4>
-           <p class="w3-center">
-            <b>
-                <?php 
-                  include_once "conexao_bd.php";
-                  include_once "getImagem.php";
-                  getImagem("usuario", $_SESSION["id"], $conexao); 
-                ?>
-              </b>
-           </p>
-           <hr> <!-- style="height:106px;width:106px" -->
+          <h4 class="w3-center"> <?php echo $_SESSION["nome"]; ?> </h4>
+           <p class="w3-center"><p class="w3-center">
+             <b>
+              <?php 
+                include_once "conexao_bd.php";
+                include_once "getImagem.php";
+               
+                getImagem("usuario", $_SESSION["id"], $conexao); 
+              ?>
+            </b>
+           <hr>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Pet</b></p>
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Dono</b></p>
            <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><b> Cidade aonde mora </b></p>
@@ -111,66 +99,77 @@
           <p><strong>Hey!</strong></p>
           <p>Seja Bem Vindo a CoolPet, Nossa rede social de pets!!!</p>
         </div>
-
-        
       
       <!-- End Left Column -->
       </div>
       
-      <!-- POSTS -->
-      
-      <?php
-        $idPessoa = $_GET["idPessoa"];
-        //$id = $_SESSION['id'];
-        include_once "conexao_bd.php";
-        //sql pra recuperar os posts de um perfil
-        $sql = "SELECT u.id, u.foto, p.hora, p.imagem, u.nome, pu.idUsuario, pu.idPost, p.texto 
-        from usuario as u
-        inner join post_usuario as pu
-        INNER JOIN post as p 
-        on u.id = pu.idUsuario and 
-        pu.idPost = p.id 
-        where u.id = $idPessoa
-        ORDER BY p.hora";
+      <!-- Middle Column -->
+      <div class="w3-col m7">
         
-        $retorno = $conexao->query($sql);
+        <!-- listar os resultados encontrados -->
         
-        if ($retorno==false) {
-          echo "deu falso" . $conexao->error;
-        }
-        while($registro = $retorno->fetch_array())
-        {   
-            $fotoUsuario = $registro["foto"];
-            $nome = $registro["nome"];
-            $texto = $registro["texto"];
-            $fotoPost = $registro["imagem"];
-            $hora = $registro["hora"];
-             
-            echo '
-        <div class="w3-col m6" id="mainCol">
-          <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-            <img class="w3-left w3-circle w3-margin-right" style="width:60px" height="50px" width="50px" src="data:image/jpg;base64,' .  base64_encode($fotoUsuario)  . '" />
-            <span class="w3-right w3-opacity">'.$hora.'</span>
-            <h4>'.$nome.'</h4><br>
+        
+        <!-- Listar os posts -->
+        <div class="w3-container w3-card w3-white w3-round w3-margin">
+            <br><center><h4>RESULTADO DA PESQUISA</h4></center>
             <hr class="w3-clear">
-            <img style="width:100%" class="w3-margin-bottom"  src="data:image/jpg;base64,' .  base64_encode($fotoPost)  . '" />
-            <p>'.$texto.'</p>
-            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
-          </div>
-        </div>
-        ';
-            
-        }
-        
-//
-        
+            <center>
 
-      ?>
-      
+            
+                <?php
+                    include_once "conexao_bd.php";
+                    include_once "listar.php";
+                    //variavel get para pegar a pesquisa
+                    $pesquisar = $_GET["pesquisar"];
+                    $filtro = $pesquisar; 
+                    
+                    if ($_GET != NULL){
+                        $filtro_sql = " WHERE id = '$filtro' 
+                                    OR nome = '$filtro'
+                                    OR sobrenome = '$filtro'
+                                    OR email = '$filtro' ";
+                                                    
+                    }
+                    
+                    $sql = "SELECT * FROM usuario $filtro_sql ";
+            
+                    $retorno = $conexao->query($sql);
+                    
+                    while ($registro = $retorno -> fetch_array())
+                    {
+                        $id = $registro["id"];
+                        $nome = $registro["nome"];
+                        echo '
+                            '.getImagem("usuario", $id, $conexao) . '
+                            <h4>'.$nome.'</h4><br>
+                            <hr class="w3-clear">
+                            <p>Sobre o perfil</p>
+                            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Ver perfil</button>
+                        ';
+                        //botão pra ver perfil ainda não implementado
+                        //Quero colocar um imput invisivel que manda pro banco de dados como uma solicitação
+                        //de amizade e que só vai pros amigos quando o outro usuario aceitar
+                        //talvez seja necessario criar uma tabela solicitações de amizades 
+                    }
+
+                    //getRegistro($filtro_sql, $conexao);
+                ?>
+                
+            </center>    
+        </div>
+        
+        
+        
+        
+          
+
+         
+        
+      <!-- End Middle Column -->
+      </div>
       
       <!-- Right Column -->
-      <div class="w3-col m3" id="rightCol">
+      <div class="w3-col m2">
         <div class="w3-card w3-round w3-white w3-center">
           <div class="w3-container">
             <p>Upcoming Events:</p>
@@ -214,6 +213,7 @@
     <!-- End Grid -->
     </div>
     
+    <?php include_once "rodape.php"; ?>
   <!-- End Page Container -->
   </div>
   <br>
@@ -248,5 +248,3 @@
 
   </body>
   </html> 
-
-  <?php include_once "rodape.php"; ?>

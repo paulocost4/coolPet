@@ -10,6 +10,7 @@
     function getFoto($id, $tabelaVar, $src, $conexao){
         //session_start();
         //include_once "conexao_bd.php";
+  
         $foto = $_FILES["foto"];
         if($foto != NULL)
         {
@@ -22,10 +23,15 @@
                 
                 $mysqlImg = addslashes(fread(fopen($nomeFinal, "r"), $tamanhoImg)); 
             
-            
+                
                 $sql = "UPDATE $tabelaVar SET foto = '$mysqlImg' where id = '$id'";
                 
+                    
+                
+                
+                
                 $retorno = $conexao->query($sql);
+                
                 if ($retorno==TRUE) {
                     echo "
                     <script>
@@ -53,6 +59,10 @@
 
     }//fim da funçao
     
+    
+    
+        
 
+    
 
 ?>
