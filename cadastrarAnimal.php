@@ -62,6 +62,7 @@
     
         //obtenção de dados digitados
         $nome = $_POST["nome"];
+        $tipo = $_POST["tipo"];
         $sexo =$_POST["sexo"];
         $idade = $_POST["idade"];
         $raca = $_POST["raca"];
@@ -71,7 +72,7 @@
         $pelagem = $_POST["pelagem"];
     
         //comando sql
-        $sql="INSERT INTO animais (nome, sexo, idade, raca, tamanho, porte, cor, pelagem) VALUES ('$nome', '$sexo', '$idade', '$raca', '$tamanho', '$porte', '$cor', '$pelagem')";
+        $sql="INSERT INTO animais (nome, tipo, sexo, idade, raca, tamanho, porte, cor, pelagem) VALUES ('$nome', '$tipo' '$sexo', '$idade', '$raca', '$tamanho', '$porte', '$cor', '$pelagem')";
         
         // executa sql no banco de dados
         $retorno = $conexao->query($sql);
@@ -222,7 +223,7 @@
 								<input type="file", name="foto"><br><br>
 
 					
-								<button type="submit" class="btn btn-danger">Enviar</button>
+								<button type="submit" class="btn btn-danger"><a href="perfil.php">Enviar</a></button>
 					
 							</form></center>
 					</div>

@@ -18,7 +18,7 @@ if ($_POST != NULL){
 					OR nome LIKE '%$filtro%' ";					
 }
 ?>
-<?php include_once "topo.php";?>
+<?php include_once "topoFeed.php";?>
 
 <!DOCTYPE html>
 <html><center>

@@ -62,6 +62,14 @@
                 <li class="nav-item">
                         <a style="color: snow" class="nav-link" href="perfil.php?idPessoa=<?php echo $_SESSION['id']?>" >Perfil</a>
                 </li>
+
+                  <li class="nav-item">
+                    <a style="color: snow" class="nav-link " href="listaramigo.php">Amigos</a>
+                </li>
+
+                <li class="nav-item">
+                    <a style="color: snow" class="nav-link " href="listarpet.php">Pets</a>
+                </li>
                
                  <li class="nav-item">
                     <a style="color: snow; text-align: right" class="nav-link " href="logout.php">Logout</a>
