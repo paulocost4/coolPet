@@ -1,14 +1,11 @@
 <?php 
   session_start();
-  echo " hahahahahah   logado = " . $_SESSION["logado"];
-  echo " hahahahahah   id = " . $_SESSION["id"];
-  echo " hahahahahah   nome = " . $_SESSION["nome"];
+ 
   include_once "topoFeed.php";
-  
-  
-
 
 ?>
+
+
   <!DOCTYPE html>
   <html>
   <title>|Time |Line</title>
@@ -52,11 +49,29 @@
                 ?>
               </b>
            </p>
-           <hr> <!-- style="height:106px;width:106px" -->
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Pet</b></p>
+            <hr>
+           <div style="background: lightgrey">
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b><?php echo $_SESSION["nome"]; ?></b></p>
+           
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Dono</b></p>
-           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><b> Cidade aonde mora </b></p>
-           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i> Data do dia</b></p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i>   
+            <script language="JavaScript">
+                  var mydate=new Date()
+                  var year=mydate.getYear()
+                  if (year<2000)
+                  year += (year < 1900) ? 1900 : 0
+                  var day=mydate.getDay()
+                  var month=mydate.getMonth()
+                  var daym=mydate.getDate()
+                  if (daym<10)
+                  daym="0"+daym
+                  var dayarray=new Array("Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado")
+                  var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
+                  document.write(dayarray[day]+", "+daym+" "+montharray[month]+" "+ year+ " ")
+                  document.write("</b></i></font>")
+            </script>
+            </b></p>
+          </div>
           </div>
         </div>
         <br>
@@ -64,15 +79,8 @@
         <!-- Accordion -->
         <div class="w3-card w3-round">
           <div class="w3-white">
-            <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-            <div id="Demo1" class="w3-hide w3-container">
-              <p>Some text..</p>
-            </div>
-            <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-            <div id="Demo2" class="w3-hide w3-container">
-              <p>Some other text..</p>
-            </div>
-            <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+           
+           
             <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
            <br>
@@ -98,22 +106,9 @@
             </div>
           </div>      
         </div>
-        <br>
-        
-       
-        <br>
-        
-        <!-- Alert Box -->
-        <div class="w3-container w3-display-container w3-round w3-theme-l4 w3-border w3-theme-border w3-margin-bottom w3-hide-small">
-          <span onclick="this.parentElement.style.display='none'" class="w3-button w3-theme-l3 w3-display-topright">
-            <i class="fa fa-remove"></i>
-          </span>
-          <p><strong>Hey!</strong></p>
-          <p>Seja Bem Vindo a CoolPet, Nossa rede social de pets!!!</p>
-        </div>
 
-        
-      
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br>
       <!-- End Left Column -->
       </div>
       
@@ -155,7 +150,7 @@
             <hr class="w3-clear">
             <img style="width:100%" class="w3-margin-bottom"  src="data:image/jpg;base64,' .  base64_encode($fotoPost)  . '" />
             <p>'.$texto.'</p>
-            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" href"curtir.php"><i class="fa fa-thumbs-up"></i>  Like</button> 
             <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
           </div>
         </div>
@@ -173,40 +168,15 @@
       <div class="w3-col m3" id="rightCol">
         <div class="w3-card w3-round w3-white w3-center">
           <div class="w3-container">
-            <p>Upcoming Events:</p>
-            <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-            <p><strong>Holiday</strong></p>
-            <p>Friday 15:00</p>
-            <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
+            <p>LIsta De Amigos</p>
+           Carregar a lista de amigos do usuario
+           
           </div>
         </div>
         <br>
         
-        <div class="w3-card w3-round w3-white w3-center">
-          <div class="w3-container">
-            <p>Friend Request</p>
-            <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-            <span>Jane Doe</span>
-            <div class="w3-row w3-opacity">
-              <div class="w3-half">
-                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-              </div>
-              <div class="w3-half">
-                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
+       
         
-        <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-          <p>ADS</p>
-        </div>
-        <br>
-        
-        <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-          <p><i class="fa fa-bug w3-xxlarge"></i></p>
-        </div>
         
       <!-- End Right Column -->
       </div>

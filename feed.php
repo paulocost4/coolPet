@@ -4,9 +4,7 @@
   {
     include_once "logar.php"; 
     
-    echo " hahahahahah   logado = " . $_SESSION["logado"];
-    echo " hahahahahah   id = " . $_SESSION["id"];
-    echo " hahahahahah   nome = " . $_SESSION["nome"];
+    
      
   }
   elseif ($_SESSION["logado"]!="ok") {
@@ -24,14 +22,10 @@
   }
 
   //função de postar
-
-
-
   
 ?>
 
 
-  
 
   <?php include_once "topoFeed.php"; ?>
   <!DOCTYPE html>
@@ -49,13 +43,7 @@
   <body class="w3-theme-l5">
 
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 1</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 2</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Link 3</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">My Profile</a>
-  </div>
+
 
   <!-- Page Container -->
   <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">    
@@ -78,10 +66,28 @@
             </b>
           </p>
            <hr>
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Pet</b></p>
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Dono</b></p>
-           <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i><b> Cidade aonde mora </b></p>
-           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i> Data do dia</b></p>
+           <div style="background: lightgrey">
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b><?php echo $_SESSION["nome"]; ?></b></p>
+           
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do pet</b></p>
+           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i>   
+            <script language="JavaScript">
+                  var mydate=new Date()
+                  var year=mydate.getYear()
+                  if (year<2000)
+                  year += (year < 1900) ? 1900 : 0
+                  var day=mydate.getDay()
+                  var month=mydate.getMonth()
+                  var daym=mydate.getDate()
+                  if (daym<10)
+                  daym="0"+daym
+                  var dayarray=new Array("Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado")
+                  var montharray=new Array(" de Janeiro de "," de Fevereiro de "," de Março de ","de Abril de ","de Maio de ","de Junho de","de Julho de ","de Agosto de ","de Setembro de "," de Outubro de "," de Novembro de "," de Dezembro de ")
+                  document.write(dayarray[day]+", "+daym+" "+montharray[month]+" "+ year+ " ")
+                  document.write("</b></i></font>")
+            </script>
+            </b></p>
+          </div>
           </div>
         </div>
         <br>
@@ -89,15 +95,7 @@
         <!-- Accordion -->
         <div class="w3-card w3-round">
           <div class="w3-white">
-            <button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-circle-o-notch fa-fw w3-margin-right"></i> My Groups</button>
-            <div id="Demo1" class="w3-hide w3-container">
-              <p>Some text..</p>
-            </div>
-            <button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-calendar-check-o fa-fw w3-margin-right"></i> My Events</button>
-            <div id="Demo2" class="w3-hide w3-container">
-              <p>Some other text..</p>
-            </div>
-            <button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-users fa-fw w3-margin-right"></i> My Photos</button>
+            
             <div id="Demo3" class="w3-hide w3-container">
            <div class="w3-row-padding">
            <br>
@@ -136,7 +134,7 @@
           <p><strong>Hey!</strong></p>
           <p>Seja Bem Vindo a CoolPet, Nossa rede social de pets!!!</p>
         </div>
-      
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <!-- End Left Column -->
       </div>
       
@@ -166,66 +164,28 @@
           </div>
         </div>
         
-        <!-- Listar os posts -->
+        <!-- Listar os posts 
         <?php
-        /*sql pros posts do feed
-        $sql = "SELECT *  
+        
+        /* $sql = "SELECT *  
                 from usuario as u 
                 INNER JOIN post_usuario as pu 
                 INNER JOIN post as p
                 ON u.id = pu.idUsuario AND p.id = pu.idPost
-                ";
-        */
+                "; */
+        
           
         ?>
-        
-        
-        
-          
-
-         
+    
+         -->
         
       <!-- End Middle Column -->
       </div>
       
       <!-- Right Column -->
-      <div class="w3-col m2">
-        <div class="w3-card w3-round w3-white w3-center">
-          <div class="w3-container">
-            <p>Upcoming Events:</p>
-            <img src="/w3images/forest.jpg" alt="Forest" style="width:100%;">
-            <p><strong>Holiday</strong></p>
-            <p>Friday 15:00</p>
-            <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
-          </div>
-        </div>
+      
         <br>
         
-        <div class="w3-card w3-round w3-white w3-center">
-          <div class="w3-container">
-            <p>Friend Request</p>
-            <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-            <span>Jane Doe</span>
-            <div class="w3-row w3-opacity">
-              <div class="w3-half">
-                <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
-              </div>
-              <div class="w3-half">
-                <button class="w3-button w3-block w3-red w3-section" title="Decline"><i class="fa fa-remove"></i></button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <br>
-        
-        <div class="w3-card w3-round w3-white w3-padding-16 w3-center">
-          <p>ADS</p>
-        </div>
-        <br>
-        
-        <div class="w3-card w3-round w3-white w3-padding-32 w3-center">
-          <p><i class="fa fa-bug w3-xxlarge"></i></p>
-        </div>
         
       <!-- End Right Column -->
       </div>

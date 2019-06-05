@@ -118,7 +118,7 @@
             
                 <?php
                     include_once "conexao_bd.php";
-                    include_once "listar.php";
+                    
                     //variavel get para pegar a pesquisa
                     $pesquisar = $_GET["pesquisar"];
                     $filtro = $pesquisar; 

@@ -54,25 +54,19 @@
                 </div>              
             </ul>
         </div> 
-        <div class="row" id="nav">
+        <div class="row" id="nav" >
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a style="color: snow" class="nav-link " href="feed.php">Home</a>
                 </li>
                 <li class="nav-item">
                         <a style="color: snow" class="nav-link" href="perfil.php?idPessoa=<?php echo $_SESSION['id']?>" >Perfil</a>
-                        </li>
-                <li class="nav-item dropdown">
-                    <a style="color: snow; background-color: #006400" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Opção</a>
-                    <div class="dropdown-menu">
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                    <a class="dropdown-item" href="#">A ser implementado</a>
-                    <a class="dropdown-item" href="#">A ser implementado</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">A ser implementado</a>
-                    </div>
                 </li>
-                    
+               
+                 <li class="nav-item">
+                    <a style="color: snow; text-align: right" class="nav-link " href="logout.php">Logout</a>
+                </li>
+   
                     
             </ul>
         </div>
