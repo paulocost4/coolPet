@@ -129,7 +129,7 @@
         ORDER BY p.hora";
         
         $retorno = $conexao->query($sql);
-        
+        $aux=1;
         if ($retorno==false) {
           echo "deu falso" . $conexao->error;
         }
@@ -140,7 +140,24 @@
             $texto = $registro["texto"];
             $fotoPost = $registro["imagem"];
             $hora = $registro["hora"];
-             
+            
+            if($aux==1)
+            {
+              $aux="0";
+              echo '
+                <div class="w3-col m6" id="mainCol">
+                  <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+                    <img class="w3-left w3-circle w3-margin-right" style="width:100px" height="100px" width="100px" src="data:image/jpg;base64,' .  base64_encode($fotoUsuario)  . '" />
+                    <span class="w3-right w3-opacity">'.$hora.'</span>
+                    <h4>'.$nome.'</h4><br>
+                    <hr class="w3-clear">
+                    <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>Adicionar amigo</button>  
+                  </div>
+                </div>
+                ';
+              
+            }
+
             echo '
         <div class="w3-col m6" id="mainCol">
           <div class="w3-container w3-card w3-white w3-round w3-margin"><br>

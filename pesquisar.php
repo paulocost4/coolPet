@@ -136,15 +136,19 @@
                     $retorno = $conexao->query($sql);
                     
                     while ($registro = $retorno -> fetch_array())
-                    {
+                    {   
                         $id = $registro["id"];
                         $nome = $registro["nome"];
+                        $url = "perfil.php?idPessoa=" . $id;
+                        
+                      
+
                         echo '
                             '.getImagem("usuario", $id, $conexao) . '
                             <h4>'.$nome.'</h4><br>
                             <hr class="w3-clear">
                             <p>Sobre o perfil</p>
-                            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Ver perfil</button>
+                            <a href="'.$url.'"><button type="button" class="w3-button w3-theme-d1 w3-margin-bottom">Ver perfil</button><a>
                         ';
                         //botão pra ver perfil ainda não implementado
                         //Quero colocar um imput invisivel que manda pro banco de dados como uma solicitação
@@ -244,6 +248,8 @@
       x.className = x.className.replace(" w3-show", "");
     }
   }
+
+  
   </script>
 
   </body>
