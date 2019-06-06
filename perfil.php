@@ -52,9 +52,7 @@
             <hr>
            <div style="background: lightgrey">
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b><?php echo $_SESSION["nome"]; ?></b></p>
-           
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do Dono</b></p>
-           <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i>   
+           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"><b></i>Data:
             <script language="JavaScript">
                   var mydate=new Date()
                   var year=mydate.getYear()
@@ -184,18 +182,8 @@
       <!-- Right Column -->
       <div class="w3-col m3" id="rightCol">
         <div class="w3-card w3-round w3-white w3-center">
-          <div class="w3-container">
-            <p>LIsta De Amigos</p>
-           Carregar a lista de amigos do usuario
-           
-          </div>
         </div>
         <br>
-        
-       
-        
-        
-      <!-- End Right Column -->
       </div>
       
     <!-- End Grid -->

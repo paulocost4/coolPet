@@ -1,13 +1,13 @@
 
 <?php 
-	
+	error_reporting(1);
 	//************* Cadastrar a foto do animal *************/
 	session_start();
 	include_once "conexao_bd.php";
 	
 
 	
-	echo "O id é: " . $_SESSION["id"] . "***";
+	
 	 
 	
 	//add o arquivo php que pega a foto
@@ -15,7 +15,7 @@
 	
 	
 
-	echo "o id do animal é: " . $_SESSION["aux"]; 
+
 	
 
 	//se a variavel de arquivo estiver cadastrada, chama a função pra pegar a foto
@@ -53,7 +53,7 @@
 		echo " hahahahahah   id = " . $_SESSION["id"];
 	
         // conectar-se ao banco de dados
-        include_once "conexao_bd.php";
+        
         //$_SESSION["logado"] = "ok";
         //echo " @ logado = " . $_SESSION["logado"];
         //existe erro de conexão?

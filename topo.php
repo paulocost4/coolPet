@@ -26,7 +26,7 @@
                                 <a class="nav-link active" href=""><img class="" src="imagens/camera22.png" height="65px" width="100px" alt="CoolPet"></a>
                             </li>
                             <li class="nav-item">
-                                <a id="navItem2" class="nav-link active" href=""><h1><b>CoolPet</b></h1></a>
+                                <a id="navItem2" class="nav-link active" href="index.php"><h1><b>CoolPet</b></h1></a>
                             </li>
                         </div>
                                       

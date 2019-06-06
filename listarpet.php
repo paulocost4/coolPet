@@ -5,6 +5,9 @@ error_reporting(1);
 $con = new mysqli ("localhost", "root", "", "coolpet");
 	$filtro_sql = "";
 
+
+
+	
 	//existe erro de conexão?
 	
 	if ($con -> connect_errno) {
@@ -32,7 +35,7 @@ if ($_POST != NULL){
 		<input type="text" name="filtro">
 		<input type="submit" value="ok"><br>
 		</form>
-		<centar><a href="cadastrarAnimal">Cadastrar Pet</a>
+		<centar><a href="cadastrarAnimal.php">Cadastrar Pet</a>
 		<br><br><br>
 		<table border="0" width="80%" >
 			<tr>

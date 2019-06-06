@@ -1,4 +1,5 @@
 <?php 
+error_reporting(1);
   session_start();
   if ($_SESSION["logado"]=="ok") 
   {
@@ -68,8 +69,6 @@
            <hr>
            <div style="background: lightgrey">
            <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b><?php echo $_SESSION["nome"]; ?></b></p>
-           
-           <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i><b> Varivel do com o nome do pet</b></p>
            <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"><b></i>   
             <script language="JavaScript">
                   var mydate=new Date()
@@ -134,7 +133,7 @@
           <p><strong>Hey!</strong></p>
           <p>Seja Bem Vindo a CoolPet, Nossa rede social de pets!!!</p>
         </div>
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      
       <!-- End Left Column -->
       </div>
       
@@ -163,21 +162,59 @@
             </div>
           </div>
         </div>
-        
-        <!-- Listar os posts 
+         
+
         <?php
-        
-        /* $sql = "SELECT *  
+          
+
+           $idPessoa = $_GET["idPessoa"];
+        //$id = $_SESSION['id'];
+        include_once "conexao_bd.php";
+        //sql pra recuperar os posts de um perfil
+        $sql = "SELECT *  
                 from usuario as u 
                 INNER JOIN post_usuario as pu 
                 INNER JOIN post as p
                 ON u.id = pu.idUsuario AND p.id = pu.idPost
-                "; */
+                ";
         
-          
-        ?>
-    
-         -->
+        $retorno = $conexao->query($sql);
+        $aux=1;
+        if ($retorno==false) {
+          echo "deu falso" . $conexao->error;
+        }
+        while($registro = $retorno->fetch_array())
+        {   
+            $fotoUsuario = $registro["foto"];
+            $nome = $registro["nome"];
+            $texto = $registro["texto"];
+            $fotoPost = $registro["imagem"];
+            $hora = $registro["hora"];
+            
+            
+
+            echo '
+        <div class="w3-col m6" id="mainCol">
+          <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
+            <img class="w3-left w3-circle w3-margin-right" style="width:60px" height="50px" width="50px" src="data:image/jpg;base64,' .  base64_encode($fotoUsuario)  . '" />
+            <span class="w3-right w3-opacity">'.$hora.'</span>
+            <h4>'.$nome.'</h4><br>
+            <hr class="w3-clear">
+            <img style="width:100%" class="w3-margin-bottom"  src="data:image/jpg;base64,' .  base64_encode($fotoPost)  . '" />
+            <p>'.$texto.'</p>
+            <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom" href"curtir.php"><i class="fa fa-thumbs-up"></i>  Like</button> 
+            <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> 
+          </div>
+        </div>
+        ';
+            
+        }
+        
+//
+        
+
+      ?>
+
         
       <!-- End Middle Column -->
       </div>

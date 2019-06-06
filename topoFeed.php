@@ -1,5 +1,6 @@
 <!-- Topo para a pagina inicial com o login -->
 <?php
+error_reporting(1);
     session_start();
 ?>
 
